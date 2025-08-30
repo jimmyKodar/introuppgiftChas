@@ -1,0 +1,73 @@
+/* prompt: Change this css so that its mcdonalds colors from the 1980s*/
+
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #fff8e1; /* light warm creamy white, retro diner vibe */
+  color: #2e2e2e; /* dark text for readability */
+}
+
+h1,h2 {
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  background-color: #da291c; /* McDonald's classic red */
+  color: #ffc72c; /* golden arches yellow */
+  border-radius: 1rem;
+}
+
+h1, .centering {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+}
+
+img {
+  display: block;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid #ffc72c; /* yellow border for retro touch */
+  border-radius: 0.5rem;
+}
+
+.section {
+  margin: 1rem;
+  padding: 1rem;
+  padding-top: 0rem;
+  background-color: #da291c; /* red */
+  color: #fff8e1; /* creamy white text */
+  border-radius: 1rem;
+  border: 2px solid #ffc72c; /* yellow accent border */
+}
+
+#twoColumns {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+}
+
+#section-about, #section-hobbies {
+  flex: 1;
+  background-color: #ffc72c; /* yellow highlight section */
+  color: #2e2e2e; /* readable dark text */
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  #twoColumns {
+    flex-direction: column;
+  }
+}
+
+h2 {
+  margin-bottom: 0rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+ul{
+  margin: 0rem;
+  
+}
