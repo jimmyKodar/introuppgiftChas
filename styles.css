@@ -1,29 +1,106 @@
-/* prompt: Change this css so that its mcdonalds colors from the 1980s*/
+/*TETRIS CSS */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 100;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+.score,
+.debug {
+    text-align: center;
+    color: white;
+}
 
+.gameBoard {
+    position: relative;
+    margin-top: 20px;
+    margin-inline: auto;
+    background-color: black;
+    width: 120px;
+    height: 240px;
+}
+
+.block {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: black;
+    width: 10px;
+    height: 10px;
+}
+.liveBlock {
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.backgroundBlock {
+    background-color: black;
+}
+
+.sideEdge,
+.bottomEdge {
+    background-color: black;
+    border-radius: 15%;
+    border: 1px solid black;
+}
+
+.frozenBlock {
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: white;
+    transition: all 700ms cubic-bezier(0.25, 0.1, 0.25, 1); /* ease (default) */
+    transition-timing-function: cubic-bezier(
+        0.25,
+        0.1,
+        0.25,
+        1
+    ); /* ease (default) */
+}
+
+.spawnAreaBlock {
+    background-color: black;
+}
+
+.oBlock {
+    background-color: hsl(60, 100%, 50%);
+}
+.tBlock {
+    background-color: hsl(276, 100%, 50%);
+}
+.sBlock {
+    background-color: hsl(120, 100%, 50%);
+}
+.zBlock {
+    background-color: hsl(0, 100%, 50%);
+}
+.lBlock {
+    background-color: hsl(40, 100%, 50%);
+}
+.jBlock {
+    background-color: hsl(240, 100%, 50%);
+}
+.iBlock {
+    background-color: hsl(180, 100%, 50%);
+}
+
+
+/* STYLES */
 body {
   font-family: "Comic Sans MS", cursive, sans-serif;
   background-color: #fff8e1; /* light warm creamy white, retro diner vibe */
   color: #2e2e2e; /* dark text for readability */
-}
 
-h1,h2 {
-  text-align: center;
-  margin: 1rem;
-  padding: 1rem;
-  padding-top: 0.5rem;
-  background-color: #da291c; /* McDonald's classic red */
-  color: #ffc72c; /* golden arches yellow */
-  border-radius: 1rem;
-}
-
-h1, .centering {
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 900px;
 }
 
-img {
+img{
   display: block;
   margin-top: 2rem;
   margin-left: auto;
@@ -32,14 +109,27 @@ img {
   border-radius: 0.5rem;
 }
 
+h1,h2{
+  text-align: center;
+  background-color: #da291c; /* McDonald's classic red */
+  color: #ffc72c; /* golden arches yellow */
+  border-radius: 1rem;
+  margin:1rem;
+}
+
 .section {
+
   margin: 1rem;
-  padding: 1rem;
-  padding-top: 0rem;
+  padding: 0.5rem;
   background-color: #da291c; /* red */
   color: #fff8e1; /* creamy white text */
   border-radius: 1rem;
   border: 2px solid #ffc72c; /* yellow accent border */
+}
+
+#erfarenheter, #erfarenheter h2 {
+  background-color: color-mix(in srgb, #da291c 50%, black);
+
 }
 
 #twoColumns {
@@ -48,26 +138,9 @@ img {
   flex-direction: row;
 }
 
-#section-about, #section-hobbies {
-  flex: 1;
-  background-color: #ffc72c; /* yellow highlight section */
-  color: #2e2e2e; /* readable dark text */
-  border-radius: 0.75rem;
-  padding: 1rem;
-}
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
   #twoColumns {
     flex-direction: column;
   }
-}
-
-h2 {
-  margin-bottom: 0rem;
-  margin-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-ul{
-  margin: 0rem;
-  
 }
