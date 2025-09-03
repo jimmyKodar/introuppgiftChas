@@ -35,15 +35,15 @@ let gameBoardDiv = document.querySelector('.gameBoard')
 const defaultFPS = 3
 const maxFPS = 10
 const quickDropFPS = 30
-let normalFPS = defaultFPS // This one increases as the game progresses
+let normalFPS = defaultFPS // increases as the game progresses
 let frameTime = 1000 / normalFPS
 let frameNr = 0
 let PrevUpdateTime = performance.now()
 let animationFrameRequestID
-let pauseGame = false
+let isPaused = false
 let score = 0
 let highScore = 0
-// rotation globals: rotation state är en int från 1->4 som håller koll på blocken snurr. Nollställs varje freeze
+// rotation globals: rotation state är en int från 1->4 som håller koll på blockens snurr. Nollställs varje freeze
 let blockNr = 1 + Math.floor(Math.random() * 7)
 rotationState = 1
 // controls
@@ -52,10 +52,15 @@ let moveRightToggle = false
 document.addEventListener('keydown', keyDown)
 document.addEventListener('keyup', keyUp)
 
-
 // start stop button
-document.getElementById("New Game").onclick = function () {
+document.getElementById("new game").onclick = function () {
   startNewGame();
+}
+// pause button
+document.getElementById("pause").onclick = function () {
+     isPaused ? document.getElementById("pause").innerText = "Pause" : document.getElementById("pause").innerText = "Resume";  
+    pauseGame();
+
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -71,6 +76,16 @@ function startNewGame() {
     createBlocks()
     setGameBoard()
     animationFrameRequestID = requestAnimationFrame(gameLoop)
+}
+function pauseGame(){
+     if (!isPaused) {
+        isPaused = true;
+        cancelAnimationFrame(animationFrameRequestID);
+        animationFrameRequestID = null;
+      } else {
+        isPaused = false;
+        animationFrameRequestID = requestAnimationFrame(gameLoop);
+      }
 }
 function isGameOver() {
     for (let i = 1; i < gameBoard[0].length - 1; i++) {
@@ -753,7 +768,6 @@ function moveFrozenDown(row) {
     }
 }
 
-
 /////////////////////////////////////////////////////////////////////////////
 // GAME LOOP
 function gameLoop() {
@@ -798,7 +812,7 @@ function gameLoop() {
         }
     }
     render()
-    if (!pauseGame) {
+    if (!isPaused) {
         requestAnimationFrame(gameLoop)
     }
 }
@@ -819,16 +833,8 @@ function keyDown(key) {
     if (key.key == 's') {
         frameTime = 1000 / quickDropFPS
     }
-    // if (key.key == " ") {
-    //   if (!pauseGame) {
-    //     pauseGame = true;
-    //     cancelAnimationFrame(animationFrameRequestID);
-    //     animationFrameRequestID = null;
-    //   } else {
-    //     pauseGame = false;
-    //     animationFrameRequestID = requestAnimationFrame(gameLoop);
-    //   }
-    // }
+   
+    
 }
 
 function keyUp(key) {
@@ -903,7 +909,7 @@ function createBlocks() {
             tmpDiv = document.createElement('div')
             tmpDiv.classList.add('block')
             tmpDiv.id = `${j},${i}`
-            tmpDiv.style.transform = `translate(${j * 10}px,${i * 10}px)`
+            tmpDiv.style.transform = `translate(${j * 20}px,${i * 20}px)`
             gameBoardDiv.appendChild(tmpDiv)
         }
     }
@@ -936,4 +942,7 @@ function setGameBoard() {
     }
 }
 /////////////////////////////////////////////////////////////////////////////
-// START GAME
+// INIT GAMEBOARD AND WAIT FOR BUTTONPRESS
+createBlocks();
+setGameBoard();
+ document.querySelector('.score').innerHTML = `${0} (${0})`
