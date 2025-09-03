@@ -767,7 +767,6 @@ function moveFrozenDown(row) {
         }
     }
 }
-
 /////////////////////////////////////////////////////////////////////////////
 // GAME LOOP
 function gameLoop() {
@@ -836,7 +835,6 @@ function keyDown(key) {
    
     
 }
-
 function keyUp(key) {
     if (key.key == 'a') {
         moveLeftToggle = false
